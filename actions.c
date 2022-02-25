@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:15:05 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/02/25 19:16:59 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/02/25 21:48:10 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void    swap(t_arr *stack)
     int tmp;
 
     if (stack->len < 2)
-        return (0);
+        return;
     tmp = stack->arr[0];
     stack->arr[0] = stack->arr[1];
     stack->arr[1] = tmp;
@@ -59,7 +59,7 @@ void    push(t_arr *stack1, t_arr *stack2)
     int len;
     
     if (!stack1->len)
-        return (0);
+        return;
     len = 0;
     tmp = stack1->arr[0];
     while (len < stack1->len - 1)
@@ -68,7 +68,6 @@ void    push(t_arr *stack1, t_arr *stack2)
         len++;
     }
     stack1->len--;
-    len = stack2->len - 1;
     while (len)
     {
         stack2->arr[len] = stack2->arr[len - 1];
