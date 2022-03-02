@@ -6,11 +6,11 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 12:59:14 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/02/25 21:46:30 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:44:08 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
 void    init_stack1(t_arr *stack,int argc, char **argv)
 {
@@ -33,9 +33,11 @@ void    init_stack1(t_arr *stack,int argc, char **argv)
         i++;
     }
     //init index
-    stack->index = 0;
+    stack->index_min = 0;
     //init array length
     stack->len = argc - 1;
+    //init stack name (A or B)
+    stack->who = 'A';
 }
 
 void    init_stack2(t_arr *stack,int argc)
@@ -59,9 +61,11 @@ void    init_stack2(t_arr *stack,int argc)
         i++;
     }
     //init index
-    stack->index = 0;
+    stack->index_min = 0;
     //init array length
     stack->len = 0;
+    //init stack name (A or B)
+    stack->who = 'B';
 }
 
 void    free_function(t_arr *stack)

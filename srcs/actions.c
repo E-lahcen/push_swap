@@ -6,11 +6,11 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:15:05 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/02/25 21:48:10 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:43:57 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
 void    rotate(t_arr *stack)
 {
@@ -25,6 +25,10 @@ void    rotate(t_arr *stack)
         len++;
     }
     stack->arr[len] = tmp;
+    if (stack->who == 'A')
+        write(1, "ra\n", 4);
+    else
+        write(1, "rb\n", 4);
 }
 
 void    rrotate(t_arr *stack)
@@ -40,6 +44,10 @@ void    rrotate(t_arr *stack)
         len--;
     }
     stack->arr[0] = tmp;
+    if (stack->who == 'A')
+        write(1, "rra\n", 4);
+    else
+        write(1, "rrb\n", 4);
 }
 
 void    swap(t_arr *stack)
@@ -51,6 +59,10 @@ void    swap(t_arr *stack)
     tmp = stack->arr[0];
     stack->arr[0] = stack->arr[1];
     stack->arr[1] = tmp;
+    if (stack->who == 'A')
+        write(1, "sa\n", 4);
+    else
+        write(1, "sb\n", 4);
 }
 
 void    push(t_arr *stack1, t_arr *stack2)
@@ -68,6 +80,10 @@ void    push(t_arr *stack1, t_arr *stack2)
         len++;
     }
     stack1->len--;
+    if (!stack2->len)
+        len = stack1->len - 1;
+    else
+        len = stack2->len;
     while (len)
     {
         stack2->arr[len] = stack2->arr[len - 1];
@@ -75,6 +91,10 @@ void    push(t_arr *stack1, t_arr *stack2)
     }
     stack2->arr[0] = tmp;
     stack2->len++;
+    if (stack1->who == 'A')
+        write(1, "pb\n", 4);
+    else
+        write(1, "pa\n", 4);
 }
 
 void    ss(t_arr *stack1, t_arr *stack2)
