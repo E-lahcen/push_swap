@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:00:31 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/03/01 18:48:26 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:24:49 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ void    mini_sort_3(t_arr *stack1);
 void    mini_sort_5(t_arr *stack1, t_arr *stack2);
 void    grab_min(t_arr *stack1, int min);
 int     pick_min(t_arr *stack);
-int    is_sorted(t_arr *stack);
+int     is_sorted(t_arr *stack);
 void    quick_sort_a(t_arr *stack1, t_arr *stack2, int len);
 void    writestack(t_arr *stack_1);
+void    mini_push_3(t_arr *stack1, t_arr *stack2, int len);
+void    quick_sort_b(t_arr *stack1, t_arr *stack2, int len);
+void		sort_3(t_arr *stack1, t_arr *stack2, int len);
+void		push_sort_3(t_arr *stack1, t_arr *stack2 ,int len);
+
+
