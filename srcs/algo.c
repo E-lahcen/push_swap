@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 12:59:22 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/03/14 18:43:10 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:55:43 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int main(int argc, char **argv)
         {
             quick_sort_a(&stack_1, &stack_2, stack_1.len, 0);
             // mini_sort_5(&stack_1, &stack_2);
-            printf("stack main 1 => ");
-            writestack(&stack_1);
+            // printf("stack main 1 => ");
+            // writestack(&stack_1);
             printf("is sorted ? = %d \n", is_sorted(&stack_1));
             // writestack(&stack_2);
         }

@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 11:10:56 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/03/12 22:57:57 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:56:24 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,28 @@
 
 void    mini_sort_3(t_arr *stack1)
 {
-    if (stack1->arr[1] < stack1->arr[0] && stack1->arr[0] < stack1->arr[2])
-        swap(stack1);
-    else if (stack1->arr[1] < stack1->arr[2] && stack1->arr[2] < stack1->arr[0])
+    // if (stack1->arr[1] < stack1->arr[0] && stack1->arr[0] < stack1->arr[2])
+    //     swap(stack1);
+    // else if (stack1->arr[1] < stack1->arr[2] && stack1->arr[2] < stack1->arr[0])
+    //     rotate(stack1);
+    // else if (stack1->arr[2] < stack1->arr[0] && stack1->arr[0] < stack1->arr[1])
+    //     rrotate(stack1);
+    // else if (stack1->arr[2] < stack1->arr[1] && stack1->arr[1] < stack1->arr[0])
+    // {
+    //     swap(stack1);
+    //     rrotate(stack1);
+    // }
+    // else if (stack1->arr[0] < stack1->arr[2] && stack1->arr[2] < stack1->arr[1])
+    // {
+    //     swap(stack1);
+    //     rotate(stack1);
+    // }
+    if (stack1->arr[0] > stack1->arr[1] && stack1->arr[0] > stack1->arr[2])
         rotate(stack1);
-    else if (stack1->arr[2] < stack1->arr[0] && stack1->arr[0] < stack1->arr[1])
+    else if (stack1->arr[1] > stack1->arr[0] && stack1->arr[1] > stack1->arr[2])
         rrotate(stack1);
-    else if (stack1->arr[2] < stack1->arr[1] && stack1->arr[1] < stack1->arr[0])
-    {
+    if (!is_sorted(stack1))
         swap(stack1);
-        rrotate(stack1);
-    }
-    else if (stack1->arr[0] < stack1->arr[2] && stack1->arr[2] < stack1->arr[1])
-    {
-        swap(stack1);
-        rotate(stack1);
-    }
 }
 
 void		sort_3(t_arr *stack1, t_arr *stack2, int len)
@@ -67,7 +73,7 @@ void    mini_push_3(t_arr *stack1, t_arr *stack2, int len)
         push(stack2, stack1);
         len--;
     }
-    mini_sort_3(stack1);
+    sort_3(stack1, stack2, len);
 }
 
 void		push_sort_3(t_arr *stack1, t_arr *stack2 ,int len)
