@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 11:10:56 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/04 14:35:23 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/04 14:37:12 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,6 @@ void    mini_sort_3(t_arr *stack1)
     if (!is_sorted(stack1))
         swap(stack1);
 }
-
-void	mini_sort_4(t_arr *stack1, t_arr *stack2)
-{
-	int	tmp[stack1->len];
-	int i;
-	int size;
-
-	i = -1;
-	size = stack1->len;
-	while (++i < stack1->len)
-		tmp[i] = stack1->arr[i];
-	
-	quick_sort_it(tmp, size);
-	while (stack1->len > 3)
-	{
-		if ((stack1->arr[0] == tmp[0] || (stack1->len == 5 && stack1->arr[0] == tmp[1])))
-			push(stack1, stack2);
-		else
-			rotate(stack1);
-	}
-	mini_sort_3(stack1);
-	while (size - stack1->len)
-		push(stack2, stack1);
-	if (stack1->arr[0] > stack1->arr[1])
-		swap(stack1);
-}
-
 
 void		sort_3(t_arr *stack1, t_arr *stack2, int len)
 {
