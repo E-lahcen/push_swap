@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 12:59:14 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/03/01 11:44:08 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/03/17 14:34:45 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,9 @@ void    init_stack2(t_arr *stack,int argc)
 void    free_function(t_arr *stack)
 {
     free(stack->arr);
+}
+
+void    free_inst(t_instructions *inst)
+{
+    free(inst->arr);
 }

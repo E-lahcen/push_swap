@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 11:10:56 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/03/16 14:56:24 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/04 14:35:23 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 
 void    mini_sort_3(t_arr *stack1)
 {
-    // if (stack1->arr[1] < stack1->arr[0] && stack1->arr[0] < stack1->arr[2])
-    //     swap(stack1);
-    // else if (stack1->arr[1] < stack1->arr[2] && stack1->arr[2] < stack1->arr[0])
-    //     rotate(stack1);
-    // else if (stack1->arr[2] < stack1->arr[0] && stack1->arr[0] < stack1->arr[1])
-    //     rrotate(stack1);
-    // else if (stack1->arr[2] < stack1->arr[1] && stack1->arr[1] < stack1->arr[0])
-    // {
-    //     swap(stack1);
-    //     rrotate(stack1);
-    // }
-    // else if (stack1->arr[0] < stack1->arr[2] && stack1->arr[2] < stack1->arr[1])
-    // {
-    //     swap(stack1);
-    //     rotate(stack1);
-    // }
     if (stack1->arr[0] > stack1->arr[1] && stack1->arr[0] > stack1->arr[2])
         rotate(stack1);
     else if (stack1->arr[1] > stack1->arr[0] && stack1->arr[1] > stack1->arr[2])
@@ -37,6 +21,33 @@ void    mini_sort_3(t_arr *stack1)
     if (!is_sorted(stack1))
         swap(stack1);
 }
+
+void	mini_sort_4(t_arr *stack1, t_arr *stack2)
+{
+	int	tmp[stack1->len];
+	int i;
+	int size;
+
+	i = -1;
+	size = stack1->len;
+	while (++i < stack1->len)
+		tmp[i] = stack1->arr[i];
+	
+	quick_sort_it(tmp, size);
+	while (stack1->len > 3)
+	{
+		if ((stack1->arr[0] == tmp[0] || (stack1->len == 5 && stack1->arr[0] == tmp[1])))
+			push(stack1, stack2);
+		else
+			rotate(stack1);
+	}
+	mini_sort_3(stack1);
+	while (size - stack1->len)
+		push(stack2, stack1);
+	if (stack1->arr[0] > stack1->arr[1])
+		swap(stack1);
+}
+
 
 void		sort_3(t_arr *stack1, t_arr *stack2, int len)
 {
@@ -66,16 +77,6 @@ void		sort_3(t_arr *stack1, t_arr *stack2, int len)
 	}
 }
 
-void    mini_push_3(t_arr *stack1, t_arr *stack2, int len)
-{
-    while (len)
-    {
-        push(stack2, stack1);
-        len--;
-    }
-    sort_3(stack1, stack2, len);
-}
-
 void		push_sort_3(t_arr *stack1, t_arr *stack2 ,int len)
 {
 	if (len == 1)
@@ -101,60 +102,6 @@ void		push_sort_3(t_arr *stack1, t_arr *stack2 ,int len)
 			else
                 swap(stack2);
 	}
-}
-
-void    mini_sort_5(t_arr *stack1, t_arr *stack2)
-{
-    int min;
-    int i;
-
-    i = 1;
-    while (stack1->len && i)
-    {
-        if (is_sorted(stack1))
-            i = 0;
-        else
-        {
-            min = pick_min(stack1);
-            grab_min(stack1, min);
-            push(stack1, stack2);
-        }
-    }
-    while (stack2->len)
-        push(stack2, stack1);
-}
-
-int    pick_min(t_arr *stack)
-{
-    int cnt;
-    int min;
-    
-    cnt = 0;
-    min = stack->arr[0];
-    while (cnt < stack->len)
-    {
-        if (stack->arr[cnt] < min)
-        {
-            min = stack->arr[cnt];
-            stack->index_min = cnt;
-        }
-        cnt++;
-    }
-    return (min);
-}
-
-void    grab_min(t_arr *stack1, int min)
-{
-    int i;
-
-    i = stack1->len / 2;
-    while (stack1->arr[0] != min)
-    {
-        if (stack1->index_min <= i)
-            rotate(stack1);
-        else
-            rrotate(stack1);
-    }
 }
 
 int    is_sorted(t_arr *stack)

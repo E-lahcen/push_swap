@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:09:41 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/03/16 11:19:36 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/04 14:35:07 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,57 +61,23 @@ void		quick_sort_it(int *arr, int len)
 		quick_sort_it(arr + i + 1, len - i - 1);
 }
 
-int mediane(int *arr, int stack_len, int current_len, int opt)
+int mediane(int *arr, int stack_len)
 {
-    int tmp[current_len];
-    int i ,j;
+    int tmp[stack_len];
+    int i;
 
     i = -1;
-    while (++i < current_len - opt)
-        tmp[current_len - opt -1 - i] = arr[i];
-    j = -1;
-    while (++j < opt)
-        tmp[i++] = arr[stack_len - j - 1];
-    quick_sort_it(tmp, current_len);
-    return (tmp[(current_len) / 2]);
+    while (++i < stack_len)
+        tmp[i] = arr[i];
+    quick_sort_it(tmp, stack_len);
+    return (tmp[stack_len / 2]);
 }
 
-int     optimize_rotation(t_arr *stack, int len1, int len2)
-{
-    int tmp[len1];
-    int i, j;
-    int opt = 0;
-    int med;
-
-    i = -1;
-    j = -1;
-    if (len1 < 4)
-        return 0;
-    while (++i < len1 - len2)
-        tmp[len1 - len2 - 1 - i] = stack->arr[i];
-    while (++j < len2)
-        tmp[i++] = stack->arr[stack->len - (j + 1)];
-    i = -1;
-    med = mediane(tmp, stack->len, len1, 0);
-    // printf("sub_med = %d\n",med);
-    // while (++i < len1)
-        // printf("%d | ", tmp[i]);
-    // printf("\n");
-    i = -1;
-    while (++i < len1)
-        if (tmp[len1 - (i + 1)] < med)
-            return opt;
-        else
-            opt++;
-    return 0;
-}
-
-void    quick_sort_a(t_arr *stack1, t_arr *stack2, int len, int opt)
+void    quick_sort_a(t_arr *stack1, t_arr *stack2, int len)
 {
     int med;
     int cnt1;
     int cnt2;
-    int i = opt;
 
     if (is_sorted(stack1))
         return;
@@ -120,27 +86,20 @@ void    quick_sort_a(t_arr *stack1, t_arr *stack2, int len, int opt)
         sort_3(stack1, stack2, len);
         return;
     }
-    cnt1 = len;  
+    cnt1 = len;
     cnt2 = 0;
-    med = mediane(stack1->arr, stack1->len, len, opt);
-    // printf("med = %d\n", med);
-    // printf("stack before = > ");
-    // writestack(stack1);
+    med = mediane(stack1->arr, len);
     while (len != cnt1 / 2 + cnt1 % 2)
+    {
         if (stack1->arr[0] < med && len--)
             push(stack1, stack2);
         else if (++cnt2)
             rotate(stack1);
-    // printf("stack after = > ");
-    // writestack(stack1);
-    opt = optimize_rotation(stack1, cnt1 / 2 + cnt1 % 2, cnt2);
-    // printf("len1 = %d | len2 = %d | opt = %d | i = %d\n", cnt1 / 2 + cnt1 % 2, cnt2, opt, i);
-    // cnt2 = abs(cnt2 - opt);
-    // if (!cnt2)
-    //     cnt2 = i;
+    }
+
     while (cnt1 / 2 + cnt1 % 2 != stack1->len && cnt2--)
         rrotate(stack1);
-    quick_sort_a(stack1, stack2, cnt1 / 2 + cnt1 % 2, 0);
+    quick_sort_a(stack1, stack2, cnt1 / 2 + cnt1 % 2);
     quick_sort_b(stack1, stack2, cnt1 / 2);
 }
 
@@ -159,18 +118,20 @@ void    quick_sort_b(t_arr *stack1, t_arr *stack2, int len)
     if (len <= 3)
     {
         push_sort_3(stack1, stack2, len);
-        return;
+        return; 
     }
-    cnt1 = len;  
+    cnt1 = len;
     cnt2 = 0;
-    med = mediane(stack2->arr, stack2->len, len, 0);
+    med = mediane(stack2->arr, len);
     while (len != cnt1 / 2)
+    {
         if (stack2->arr[0] >= med && len--)
             push(stack2, stack1);
         else if (++cnt2)
             rotate(stack2);
+    }
     while (cnt1 / 2 != stack2->len && cnt2--)
         rrotate(stack2);
-    quick_sort_a(stack1, stack2, cnt1 / 2 + cnt1 % 2, 0);
+    quick_sort_a(stack1, stack2, cnt1 / 2 + cnt1 % 2);
     quick_sort_b(stack1, stack2, cnt1 / 2);
 }
