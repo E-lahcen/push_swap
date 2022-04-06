@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:00:31 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/05 15:51:42 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:42:34 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,8 @@ typedef struct s_arr
 {
     int *arr;
     int len;
-    int index_min;
     char who;
 } t_arr;
-
-typedef struct s_instructions
-{
-    char **arr;
-    int len;
-} t_instructions;
 
 void    rotate(t_arr *stack, int print);
 void    rrotate(t_arr *stack, int print);
@@ -40,9 +33,9 @@ void    swap(t_arr *stack, int print);
 void    push(t_arr *stack1, t_arr *stack2, int print);
 void    init_stack1(t_arr *stack,int argc, char **argv);
 void    init_stack2(t_arr *stack,int argc);
-void    ss(t_arr *stack1, t_arr *stack2, int print);
-void    rr(t_arr *stack1, t_arr *stack2, int print);
-void    rrr(t_arr *stack1, t_arr *stack2, int print);
+void    ss(t_arr *stack1, t_arr *stack2);
+void    rr(t_arr *stack1, t_arr *stack2);
+void    rrr(t_arr *stack1, t_arr *stack2);
 void    free_function(t_arr *stack);
 void    mini_sort_3(t_arr *stack1);
 void    grab_min(t_arr *stack1, int min);
@@ -53,7 +46,5 @@ void    writestack(t_arr *stack_1);
 void    quick_sort_b(t_arr *stack1, t_arr *stack2, int len);
 void	sort_3(t_arr *stack1, t_arr *stack2, int len);
 void	push_sort_3(t_arr *stack1, t_arr *stack2 ,int len);
-void    free_inst(t_instructions *inst);
 void	quick_sort_it(int *arr, int len);
-
-
+int	    is_sorted_descend(t_arr *stack);
