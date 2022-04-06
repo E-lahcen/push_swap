@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:09:41 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/04 14:35:07 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:08:47 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ void    quick_sort_a(t_arr *stack1, t_arr *stack2, int len)
     while (len != cnt1 / 2 + cnt1 % 2)
     {
         if (stack1->arr[0] < med && len--)
-            push(stack1, stack2);
+            push(stack1, stack2, 1);
         else if (++cnt2)
-            rotate(stack1);
+            rotate(stack1, 1);
     }
 
     while (cnt1 / 2 + cnt1 % 2 != stack1->len && cnt2--)
-        rrotate(stack1);
+        rrotate(stack1, 1);
     quick_sort_a(stack1, stack2, cnt1 / 2 + cnt1 % 2);
     quick_sort_b(stack1, stack2, cnt1 / 2);
 }
@@ -112,7 +112,7 @@ void    quick_sort_b(t_arr *stack1, t_arr *stack2, int len)
     if (is_sorted_descend(stack2))
     {
         while (len--)
-            push(stack2, stack1);
+            push(stack2, stack1, 1);
         return;
     }
     if (len <= 3)
@@ -126,12 +126,12 @@ void    quick_sort_b(t_arr *stack1, t_arr *stack2, int len)
     while (len != cnt1 / 2)
     {
         if (stack2->arr[0] >= med && len--)
-            push(stack2, stack1);
+            push(stack2, stack1, 1);
         else if (++cnt2)
-            rotate(stack2);
+            rotate(stack2, 1);
     }
     while (cnt1 / 2 != stack2->len && cnt2--)
-        rrotate(stack2);
+        rrotate(stack2, 1);
     quick_sort_a(stack1, stack2, cnt1 / 2 + cnt1 % 2);
     quick_sort_b(stack1, stack2, cnt1 / 2);
 }
