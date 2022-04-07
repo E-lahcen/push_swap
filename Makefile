@@ -6,7 +6,7 @@
 #    By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 14:38:34 by lelhlami          #+#    #+#              #
-#    Updated: 2022/04/06 15:34:33 by lelhlami         ###   ########.fr        #
+#    Updated: 2022/04/07 06:37:42 by lelhlami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ LIBFT_SRC = include/libft
 SOURCES = 	main.c \
 			init.c \
 			utils.c \
+			utils2.c \
 			big_algo.c \
 			actions.c \
 			actions2.c \
@@ -74,7 +75,7 @@ tmp:
 bonus: all
 	$(CC) $(FLAGS) bonus/main.c include/get_next_line/*.c srcs/actions.c  srcs/actions2.c \
 	srcs/big_algo.c srcs/init.c srcs/mini_algo.c include/libft/ft_strncmp.c \
-	include/libft/ft_atoi.c srcs/utils.c -o $(BNS)
+	include/libft/ft_atoi.c srcs/utils*.c -o $(BNS)
 
 clean:
 	@echo "$(VIOLET)Deleting Libft library files$(CYAN)"

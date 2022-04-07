@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 12:59:22 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/06 15:47:33 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/07 07:02:39 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int main(int argc, char **argv)
         free_function(&stack_1);
         free_function(&stack_2);    
     }
-    // system("leaks push_swap");
+    system("leaks push_swap");
     return (0);
 }
