@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 06:36:25 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/07 09:21:50 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/07 09:58:42 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,12 @@ void	check_doubles(t_arr *stack1)
 void	free_function(t_arr *stack)
 {
 	free(stack->arr);
+}
+
+void	check_stack(t_arr *stack1, t_arr *stack2)
+{
+	if (is_sorted(stack1) && !stack2->len)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }

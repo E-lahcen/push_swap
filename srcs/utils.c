@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:33:40 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/07 06:57:13 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/07 09:58:28 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,12 @@ void	quick_sort_it(int *arr, int len)
 		quick_sort_it(arr, i);
 	if (i != len - 1)
 		quick_sort_it(arr + i + 1, len - i - 1);
+}
+
+void	free_and_exit(t_arr *stack1, t_arr *stack2)
+{
+	free_function(stack1);
+	free_function(stack2);
+	write(2, "Error\n", 6);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:15:05 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/06 14:59:10 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/07 09:41:19 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	rotate(t_arr *stack, int print)
 	int	len;
 
 	len = 0;
+	if (stack->len < 2)
+		return ;
 	tmp = stack->arr[0];
 	while (len < stack->len - 1)
 	{
@@ -36,6 +38,8 @@ void	rrotate(t_arr *stack, int print)
 	int	tmp;
 	int	len;
 
+	if (stack->len < 2)
+		return ;
 	len = stack->len - 1;
 	tmp = stack->arr[len];
 	while (len)

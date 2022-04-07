@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 12:59:14 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/07 06:42:10 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/07 09:49:58 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,15 @@ void	init_stack2(t_arr *stack, int argc)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (argc)
 	{
 		stack->arr = (int *)malloc(sizeof(int) * argc - 1);
 		if (!stack->arr)
-		{
-			write(1, "Issue in array initialisation!", 25);
-			return ;
-		}
+			return ((void)write(1, "Issue in array initialisation!", 25));
 	}
-	while (i < argc - 1)
-	{
+	while (++i < argc - 1)
 		stack->arr[i] = 0;
-		i++;
-	}
 	stack->len = 0;
 	stack->who = 'B';
 }
