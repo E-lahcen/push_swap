@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_algo.c                                         :+:      :+:    :+:   */
+/*   big_algo_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:09:41 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/07 12:42:39 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/13 12:32:00 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include_bonus/push_swap.h"
 
 int	mediane(int *arr, int stack_len)
 {

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 12:59:22 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/14 10:24:57 by lelhlami         ###   ########.fr       */
+/*   Created: 2021/11/28 23:06:30 by lelhlami          #+#    #+#             */
+/*   Updated: 2021/12/04 21:43:22 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_arr	stack_1;
-	t_arr	stack_2;
+	char	*str;
+	size_t	i;
 
-	if (argc > 2)
+	if (!s)
+		return (ft_strdup(""));
+	else if (!f)
+		return ((char *)s);
+	i = 0;
+	str = ft_strdup((char *)s);
+	if (!str)
+		return (0);
+	while (s[i])
 	{
-		init_stack1(&stack_1, argc, argv);
-		init_stack2(&stack_2, argc);
-		if (argc == 4)
-			mini_sort_3(&stack_1);
-		else
-			quick_sort_a(&stack_1, &stack_2, stack_1.len);
-		free_function(&stack_1);
-		free_function(&stack_2);
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	if (argc == 2 && !check_argv(argv[1]))
-		write(1, "Error\n", 6);
-	return (0);
+	return (str);
 }

@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 12:59:22 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/14 10:24:57 by lelhlami         ###   ########.fr       */
+/*   Created: 2021/11/29 21:02:08 by lelhlami          #+#    #+#             */
+/*   Updated: 2021/12/04 21:42:57 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstmap(t_list *lst, void *(f)(void *), void (del)(void *))
 {
-	t_arr	stack_1;
-	t_arr	stack_2;
+	t_list	*head;
+	t_list	*new;
 
-	if (argc > 2)
+	head = NULL;
+	new = NULL;
+	if (!lst || !f)
+		return (NULL);
+	while (lst != NULL)
 	{
-		init_stack1(&stack_1, argc, argv);
-		init_stack2(&stack_2, argc);
-		if (argc == 4)
-			mini_sort_3(&stack_1);
+		new = ft_lstnew(f(lst->content));
+		if (!new)
+		{
+			ft_lstclear(&head, del);
+			return (NULL);
+		}
+		if (head == NULL)
+			head = new;
 		else
-			quick_sort_a(&stack_1, &stack_2, stack_1.len);
-		free_function(&stack_1);
-		free_function(&stack_2);
+			ft_lstadd_back(&head, new);
+		lst = lst->next;
 	}
-	if (argc == 2 && !check_argv(argv[1]))
-		write(1, "Error\n", 6);
-	return (0);
+	return (head);
 }

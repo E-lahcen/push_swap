@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:53:57 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/07 10:01:37 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/13 12:32:00 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-#include "../include/get_next_line/get_next_line.h"
+#include "../include_bonus/push_swap.h"
 
 void	exec_commands(char *line, t_arr *stack1, t_arr *stack2)
 {
@@ -57,6 +56,7 @@ int	main(int argc, char **argv)
 		while (line && line[0] != '\n')
 		{
 			exec_commands(line, &stack1, &stack2);
+			free(line);
 			line = NULL;
 			line = get_next_line(0);
 		}

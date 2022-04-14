@@ -6,7 +6,7 @@
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:00:31 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/07 10:46:11 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/13 12:11:18 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../include/libft/libft.h"
+# include "get_next_line/get_next_line.h"
 
 # define BUFEER_SIZE 4096
 
@@ -52,5 +52,9 @@ int		check_argv(char *argv);
 void	check_doubles(t_arr *stack1);
 void	check_stack(t_arr *stack1, t_arr *stack2);
 void	free_and_exit(t_arr *stack1, t_arr *stack2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_atoi(const char *str);
+size_t	ft_strlen(const char *s);
+char	*get_next_line(int fd);
 
 #endif

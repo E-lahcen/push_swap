@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 12:59:22 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/14 10:24:57 by lelhlami         ###   ########.fr       */
+/*   Created: 2021/11/24 17:55:08 by lelhlami          #+#    #+#             */
+/*   Updated: 2021/12/04 21:20:12 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	t_arr	stack_1;
-	t_arr	stack_2;
+	size_t	size_src;
+	size_t	res;
 
-	if (argc > 2)
+	res = ft_strlen(src);
+	if (!src)
+		return (0);
+	if (!dstsize)
+		return (res);
+		size_src = 0;
+	while (src[size_src] != '\0' && size_src < dstsize - 1)
 	{
-		init_stack1(&stack_1, argc, argv);
-		init_stack2(&stack_2, argc);
-		if (argc == 4)
-			mini_sort_3(&stack_1);
-		else
-			quick_sort_a(&stack_1, &stack_2, stack_1.len);
-		free_function(&stack_1);
-		free_function(&stack_2);
+		dst[size_src] = src[size_src];
+		size_src++;
 	}
-	if (argc == 2 && !check_argv(argv[1]))
-		write(1, "Error\n", 6);
-	return (0);
+	dst[size_src] = '\0';
+	return (res);
 }

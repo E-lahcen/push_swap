@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 12:59:22 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/14 10:24:57 by lelhlami         ###   ########.fr       */
+/*   Created: 2021/11/29 04:14:55 by lelhlami          #+#    #+#             */
+/*   Updated: 2021/12/04 15:25:27 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_arr	stack_1;
-	t_arr	stack_2;
+	t_list	*l1;
 
-	if (argc > 2)
+	if (lst)
 	{
-		init_stack1(&stack_1, argc, argv);
-		init_stack2(&stack_2, argc);
-		if (argc == 4)
-			mini_sort_3(&stack_1);
+		if (!*lst)
+			*lst = new;
 		else
-			quick_sort_a(&stack_1, &stack_2, stack_1.len);
-		free_function(&stack_1);
-		free_function(&stack_2);
+		{
+			l1 = ft_lstlast(*lst);
+			l1 -> next = new;
+		}
 	}
-	if (argc == 2 && !check_argv(argv[1]))
-		write(1, "Error\n", 6);
-	return (0);
 }

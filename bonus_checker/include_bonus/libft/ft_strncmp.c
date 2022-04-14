@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 12:59:22 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/14 10:24:57 by lelhlami         ###   ########.fr       */
+/*   Created: 2021/11/25 12:46:07 by lelhlami          #+#    #+#             */
+/*   Updated: 2021/12/04 21:44:29 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_arr	stack_1;
-	t_arr	stack_2;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	if (argc > 2)
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	i = 0;
+	if (!n)
+		return (0);
+	while (i < n)
 	{
-		init_stack1(&stack_1, argc, argv);
-		init_stack2(&stack_2, argc);
-		if (argc == 4)
-			mini_sort_3(&stack_1);
-		else
-			quick_sort_a(&stack_1, &stack_2, stack_1.len);
-		free_function(&stack_1);
-		free_function(&stack_2);
+		if (!str1[i] || !str2[i])
+			return (str1[i] - str2[i]);
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
 	}
-	if (argc == 2 && !check_argv(argv[1]))
-		write(1, "Error\n", 6);
 	return (0);
 }

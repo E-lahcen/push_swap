@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 12:59:22 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/14 10:24:57 by lelhlami         ###   ########.fr       */
+/*   Created: 2021/11/25 19:31:48 by lelhlami          #+#    #+#             */
+/*   Updated: 2021/12/01 21:30:45 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	t_arr	stack_1;
-	t_arr	stack_2;
+	size_t	i;
+	size_t	j;
 
-	if (argc > 2)
+	i = 0;
+	if (!*needle)
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
 	{
-		init_stack1(&stack_1, argc, argv);
-		init_stack2(&stack_2, argc);
-		if (argc == 4)
-			mini_sort_3(&stack_1);
-		else
-			quick_sort_a(&stack_1, &stack_2, stack_1.len);
-		free_function(&stack_1);
-		free_function(&stack_2);
+		j = 0;
+		while (haystack[i + j] == needle[j] && (i + j) < len)
+		{
+			j++;
+			if (needle[j] == '\0')
+				return ((char *)haystack + i);
+		}
+		i++;
 	}
-	if (argc == 2 && !check_argv(argv[1]))
-		write(1, "Error\n", 6);
 	return (0);
 }

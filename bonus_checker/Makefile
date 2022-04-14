@@ -6,28 +6,28 @@
 #    By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 14:38:34 by lelhlami          #+#    #+#              #
-#    Updated: 2022/04/13 12:17:29 by lelhlami         ###   ########.fr        #
+#    Updated: 2022/04/13 12:30:26 by lelhlami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = checker
 
-BNS = checker
-
-SRC_PATH  = srcs
+SRC_PATH  = srcs_bonus
 
 OBJ_PATH  = objs
 
-LIBFT_SRC = include/libft
+LIBFT_SRC = include_bonus/libft
 
-SOURCES = 	main.c \
-			init.c \
-			utils.c \
-			utils2.c \
-			big_algo.c \
-			actions.c \
-			actions2.c \
-			mini_algo.c
+SOURCES = 	main_bonus.c \
+			init_bonus.c \
+			utils_bonus.c \
+			utils2_bonus.c \
+			big_algo_bonus.c \
+			actions_bonus.c \
+			actions2_bonus.c \
+			mini_algo_bonus.c \
+			get_next_line_bonus.c \
+			get_next_line_utils_bonus.c
 			
 SRCS = $(addprefix $(SRC_PATH)/,$(SOURCES))
 
@@ -55,41 +55,35 @@ WHITE       = \033[1;37m
 all : lib tmp $(NAME)
 
 lib:
-	@echo "$(GREEN)Creating libft files$(CYAN)"
+	@echo "$(GREEN)Creating bonus libft files$(CYAN)"
 	@make -C $(LIBFT_SRC)
 	
 $(NAME): $(OBJS)
 	@$(CC) $(FLAGS) $(LIBFT_SRC)/libft.a $(OBJS) -o $@ 
 	@echo "$(GREEN)Project successfully compiled"
+	@cp checker ..
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c include/$(HEADER)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c include_bonus/$(HEADER)
 	@$(CC) $(FLAGS) -c -o $@ $<
-	@echo "$(BLUE)Creating object file -> $(WHITE)$(notdir $@)... $(RED)[Done]$(NOC)"
+	@echo "$(BLUE)Creating bonus object file -> $(WHITE)$(notdir $@)... $(RED)[Done]$(NOC)"
 
 tmp:
 	@mkdir -p objs
-
+	
 %.o : %.c
 	@$(CC) $(FLAGS) -c $<
-
-bonus:
-	@echo "$(GREEN)Creating bonus files$(CYAN)"
-	@make -C bonus_checker
 
 clean:
 	@echo "$(VIOLET)Deleting Libft library files$(CYAN)"
 	@make clean -C $(LIBFT_SRC)
-	@echo "$(VIOLET)Deleting push_swap library files$(CYAN)"
+	@echo "$(VIOLET)Deleting bonus push_swap library files$(CYAN)"
 	@rm -f $(OBJS)
-	@make clean -C bonus_checker
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f $(BNS)
 	@rm -rf $(OBJ_PATH)
 	@make fclean -C $(LIBFT_SRC)
-	@make fclean -C bonus_checker
 
 re: fclean all
 
-.PHONY: tmp, re, fclean, clean, bonus, lib, all
+.PHONY: tmp, re, fclean, clean, lib, all

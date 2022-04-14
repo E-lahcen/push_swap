@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelhlami <lelhlami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 06:36:25 by lelhlami          #+#    #+#             */
-/*   Updated: 2022/04/14 10:22:49 by lelhlami         ###   ########.fr       */
+/*   Updated: 2022/04/13 12:32:00 by lelhlami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include_bonus/push_swap.h"
 
 int	check_int_limits(char *str)
 {
@@ -67,7 +67,7 @@ void	check_doubles(t_arr *stack1)
 	i = -1;
 	while (++i < stack1->len - 1)
 	{
-		if (tmp[i] == tmp[i + 1])
+		if (stack1->arr[i] == stack1->arr[i + 1])
 		{
 			write(2, "Error\n", 6);
 			free_function(stack1);
